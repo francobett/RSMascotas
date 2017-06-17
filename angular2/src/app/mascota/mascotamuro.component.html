@@ -1,0 +1,17 @@
+PetMoment bro! {{mascotaNombre}}
+<label>Titulo:</label> 
+		<input type="text" class="form-control" name="titulo"  
+			[(ngModel)]="titulo" required>
+
+<label>Descripcion:</label> 
+		<input type="text" class="form-control" name="descripcion"  
+			[(ngModel)]="descripcion" required>
+<button class="btn btn-success"  (click)="submitForm()">Guardar</button>
+
+<div *ngFor="let moment of moments">
+<span *ngIf="moment.mascota == mascotaNombre">
+	{{moment.mascota}}
+	{{moment.titulo}}
+	{{moment.descripcion}}
+</span>
+</div>
