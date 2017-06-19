@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { RestBaseService } from '../tools/rest.tools';
 import { Mascota } from '../mascota/mascota.service';
 import 'rxjs/add/operator/toPromise';
-
+import 'rxjs/add/operator/map';
 @Injectable()
 export class MomentService extends RestBaseService {
     private url = '/rest/moment';
@@ -22,6 +22,8 @@ getMoments(): Promise<Moment[]> {
         }
       )
       .catch(this.handleError);
+
+     
       
   }
 //Crear Moment service
@@ -44,5 +46,8 @@ getMoments(): Promise<Moment[]> {
 export interface Moment {
   titulo: string;
   descripcion: string;
-  mascota: string;
+  mascotaID: Number;
+  mascotaNombre: string;
+  usuario: string;
+  fecha: number;
 }

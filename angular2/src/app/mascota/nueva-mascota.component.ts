@@ -15,10 +15,9 @@ export class NuevaMascotaComponent implements OnInit {
   errorMessage: string;
   formSubmitted: boolean;
   errors: string[] = [];
-
   constructor(private mascotasService: MascotaService,
     private route: ActivatedRoute, private router: Router) {
-    this.mascota = { id: null, nombre: '', fechaNacimiento: '', descripcion: '' };
+    this.mascota = { id: null, nombre: '', fechaNacimiento: '', descripcion: ''};
   }
 
   ngOnInit() {
@@ -61,4 +60,5 @@ export class NuevaMascotaComponent implements OnInit {
       this.errorMessage = data.message;
     }
   }
+
 }

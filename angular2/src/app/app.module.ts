@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
 import { DatePickerPipe } from './tools/common-pipes.pipe';
 import { RegistrarUsuarioComponent } from './usuario/registrar-usuario.component';
 import { DatePickerModule } from 'ng2-datepicker';
-
+import { LOCALE_ID } from '@angular/core';
 import { MascotaMuroComponent } from "app/mascota/mascotamuro.component";
 import { InicioComponent } from "app/inicio/inicio.component";
 import { MomentService } from "app/moments/moment.service";
@@ -44,8 +44,16 @@ import { MomentService } from "app/moments/moment.service";
     DatePickerModule,
     routing
   ],
-  providers: [MomentService,MascotaService, UsuarioService, ProvinciaService,
-    PerfilService, { provide: APP_BASE_HREF, useValue: environment.baseHref }],
+  providers: [
+  MomentService,
+  MascotaService, 
+  UsuarioService, 
+  ProvinciaService,
+  PerfilService, 
+  { provide: APP_BASE_HREF, useValue: environment.baseHref },
+  { provide: LOCALE_ID, useValue: "es-AR" }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,11 +13,18 @@ import { Mascota } from '../mascota/mascota.service';
 })
 export class MascotaMuroComponent implements OnInit {
     errorMessage: string;
+    //Atributos para Guardar el Moment
     mascotaNombre: string;
+    mascotaID: number;
     titulo: string;
     descripcion: string;
-    moments: Moment[];
+    usuario: string;
+
     currentUrl: string ;
+
+    //Moment a Mostrar
+    moments: Moment[];
+    
     constructor( 
         private momentService: MomentService,
         private route: ActivatedRoute, 
@@ -29,34 +36,34 @@ export class MascotaMuroComponent implements OnInit {
     ngOnInit() {
         // Obtener ID de mascota a través de la ruta
         this.currentUrl = this.router.url;
-
+        this.mascotaID = Number(this.currentUrl.substring(6));
         //Traer Nombre Mascota según ID , se parsea a Number
-        this.mascotasService.buscarMascota(Number(this.currentUrl.substring(6)))
-        .then(mascota => {
-          this.mascotaNombre = mascota.nombre;
-        })
-        .catch(error => this.errorMessage = <any>error );
+        this.mascotasService.buscarMascota( this.mascotaID)
+          .then(mascotaActual => this.mascotaNombre = mascotaActual.nombre)
+          .catch(error => this.errorMessage = <any>error);
         //Traer Momentos
         this.getMoments();
+        //Traer Usuario
+        this.usuarioService.getPrincipal()
+        .then(usuario => this.usuario = usuario.login)
+        .catch(error => this.errorMessage = <any>error);
     }
     //Crear nuevo Moment y Actualizar la lista al presionar Guardar
     submitForm() {
-    if (this.titulo != undefined) {
-      this.titulo = this.titulo.trim();
-    }
-    if (this.titulo != undefined) {
-      this.titulo = this.titulo.trim();
-    }
     try {
+      //Si es vacio o nulo no hacer nada
       if (this.titulo == ""
           || this.titulo == undefined
-          || this.titulo == null) {
-      } else {
-        this.titulo = this.titulo.trim();
+          || this.titulo == null) {} 
+      else {
+        this.titulo = this.titulo.trim();//Eliminar espacios innecesarios en título
         let moment: Moment = {
             titulo: this.titulo,
             descripcion: this.descripcion,
-            mascota: this.mascotaNombre
+            mascotaID: this.mascotaID,
+            mascotaNombre: this.mascotaNombre,
+            usuario: this.usuario,
+            fecha: Date.now()
         };
         this.newMoment(moment);
         //Actualizar Moments, agregando el nuevo

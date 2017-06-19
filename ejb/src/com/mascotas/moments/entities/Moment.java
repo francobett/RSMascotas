@@ -12,6 +12,7 @@ import javax.persistence.OrderColumn;
 
 
 import com.mascotas.mascotas.entities.Mascota;
+import com.mascotas.seguridad.entities.Usuario;
 
 @Entity(name = "moment")
 public class Moment implements Serializable{
@@ -31,8 +32,19 @@ public class Moment implements Serializable{
 	
 	@OrderColumn()
 	@Column(nullable = false)
-	private String mascota;
+	private Integer mascotaID;
 	
+	@OrderColumn()
+	@Column(nullable = false)
+	private String mascotaNombre;
+	
+	@OrderColumn()
+	@Column(nullable = false)
+	private String usuario;
+	
+	@OrderColumn()
+	@Column(nullable = false)
+	private Long fecha;
 	
 	public Long getId() {
 		return id;
@@ -57,11 +69,35 @@ public class Moment implements Serializable{
 		this.descripcion = descripcion;
 	}
 	
-	public String getMascota() {
-		return mascota;
+	public Integer getMascotaID() {
+		return mascotaID;
 	}
 
-	public void setMascota(String mascota) {
-		this.mascota = mascota;
+	public void setMascotaID(Integer mascotaID) {
+		this.mascotaID = mascotaID;
+	}
+	
+	public String getMascotaNombre() {
+		return mascotaNombre;
+	}
+
+	public void setMascotaNombre(String mascotaNombre) {
+		this.mascotaNombre = mascotaNombre;
+	}
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	
+	public Long getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Long fecha) {
+		this.fecha = fecha;
 	}
 }

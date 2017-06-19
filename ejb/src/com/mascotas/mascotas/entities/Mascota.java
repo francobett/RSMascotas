@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +33,7 @@ public class Mascota implements Serializable {
 	@OrderColumn()
 	@Column(nullable = false)
 	private String nombre;
+	
 
 	@Temporal(TemporalType.DATE)
 	private java.util.Date fechaNacimiento;
@@ -40,6 +42,7 @@ public class Mascota implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Usuario usuario;
+	
 
 	public Integer getId() {
 		return id;

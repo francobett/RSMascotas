@@ -38,7 +38,7 @@ public class MomentRepository implements Repositorio<Integer, Moment>{
 	
 
 	public List<Moment> getMoments() {
-		String q = "SELECT p from moment p" ;
+		String q = "SELECT p from moment p ORDER BY fecha DESC";
 		TypedQuery<Moment> query = entityManager.createQuery(q, Moment.class);
 		return query.getResultList();
 	}

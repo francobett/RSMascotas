@@ -1,1 +1,10 @@
-jeje
+<div *ngFor="let moment of moments">
+<span>
+	Momentos de la mascota actual
+	{{moment.mascota}}
+    {{moment.titulo}}
+	{{moment.descripcion}}
+	{{moment.usuario}}
+	{{moment.fecha | date:'H:mm,d MMMM y'}}
+</span>
+</div>

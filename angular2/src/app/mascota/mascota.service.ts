@@ -57,6 +57,8 @@ export class MascotaService extends RestBaseService {
       .catch(this.handleError);
     }
   }
+    
+
 }
 
 export interface Mascota {

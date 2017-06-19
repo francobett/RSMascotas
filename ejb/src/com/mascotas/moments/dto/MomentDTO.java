@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-
+import com.mascotas.mascotas.entities.Mascota;
 import com.mascotas.moments.entities.Moment;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MomentDTO implements Serializable {
@@ -15,7 +15,11 @@ public class MomentDTO implements Serializable {
 	private Long id;
 	private String titulo;
 	private String descripcion;
-	private String mascota; 
+	private Integer mascotaID; 
+	private String mascotaNombre; 
+	private String usuario;
+	private Long fecha;
+	
 	public Long getId() {
 		return id;
 	}
@@ -38,12 +42,36 @@ public class MomentDTO implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getMascota() {
-		return mascota;
+	public Integer getMascotaID() {
+		return mascotaID;
 	}
 
-	public void setMascota(String mascota) {
-		this.mascota = mascota;
+	public void setMascotaID(Integer mascotaID) {
+		this.mascotaID = mascotaID;
+	}
+	
+	public String getMascotaNombre() {
+		return mascotaNombre;
+	}
+
+	public void setMascotaNombre(String mascotaNombre) {
+		this.mascotaNombre = mascotaNombre;
+	}
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	
+	public Long getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Long fecha) {
+		this.fecha = fecha;
 	}
 	
 	public static class Factory {
@@ -52,7 +80,10 @@ public class MomentDTO implements Serializable {
 			result.id = moment.getId();
 			result.titulo = moment.getTitulo();
 			result.descripcion = moment.getDescripcion();
-			result.mascota = moment.getMascota();
+			result.mascotaID = moment.getMascotaID();
+			result.mascotaNombre = moment.getMascotaNombre();
+			result.usuario = moment.getUsuario();
+			result.fecha = moment.getFecha();
 			return result;
 		}
 
@@ -65,5 +96,4 @@ public class MomentDTO implements Serializable {
 		}
 
 	}
-
 }

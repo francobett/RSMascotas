@@ -9,9 +9,12 @@ PetMoment bro! {{mascotaNombre}}
 <button class="btn btn-success"  (click)="submitForm()">Guardar</button>
 
 <div *ngFor="let moment of moments">
-<span *ngIf="moment.mascota == mascotaNombre">
-	{{moment.mascota}}
+<span *ngIf="moment.mascotaID == mascotaID">
+	Momentos de la mascota actual
 	{{moment.titulo}}
 	{{moment.descripcion}}
+	{{moment.usuario}}
+	{{moment.mascotaNombre}}
+	{{moment.fecha | date:'H:mm,d MMMM y'}}
 </span>
 </div>
