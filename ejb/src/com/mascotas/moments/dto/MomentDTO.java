@@ -1,5 +1,6 @@
 package com.mascotas.moments.dto;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,6 +20,24 @@ public class MomentDTO implements Serializable {
 	private String mascotaNombre; 
 	private String usuario;
 	private Long fecha;
+	private String imagenMoment;
+	private String mascotaImagen;
+
+	public String getMascotaImagen() {
+		return mascotaImagen;
+	}
+
+	public void setMascotaImagen(String mascotaImagen) {
+		this.mascotaImagen = mascotaImagen;
+	} 
+	
+	public String getImagenMoment() {
+		return imagenMoment;
+	}
+
+	public void setImagen(String imagenMoment) {
+		this.imagenMoment = imagenMoment;
+	}
 	
 	public Long getId() {
 		return id;
@@ -84,6 +103,8 @@ public class MomentDTO implements Serializable {
 			result.mascotaNombre = moment.getMascotaNombre();
 			result.usuario = moment.getUsuario();
 			result.fecha = moment.getFecha();
+			result.imagenMoment = moment.getImagenMoment();
+			result.mascotaImagen = moment.getMascotaImagen();
 			return result;
 		}
 

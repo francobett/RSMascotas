@@ -22,9 +22,12 @@ export class MascotaMuroComponent implements OnInit {
 
     currentUrl: string ;
 
+    imagen: string;
+    cargarImagen = "Cargar Imagen";
+    fileName: string;
     //Moment a Mostrar
     moments: Moment[];
-    
+    mascotaActualImagen: string;
     constructor( 
         private momentService: MomentService,
         private route: ActivatedRoute, 
@@ -39,7 +42,9 @@ export class MascotaMuroComponent implements OnInit {
         this.mascotaID = Number(this.currentUrl.substring(6));
         //Traer Nombre Mascota según ID , se parsea a Number
         this.mascotasService.buscarMascota( this.mascotaID)
-          .then(mascotaActual => this.mascotaNombre = mascotaActual.nombre)
+          .then(mascotaActual => {this.mascotaNombre = mascotaActual.nombre,
+          this.mascotaActualImagen = mascotaActual.imagen    
+        })
           .catch(error => this.errorMessage = <any>error);
         //Traer Momentos
         this.getMoments();
@@ -63,14 +68,17 @@ export class MascotaMuroComponent implements OnInit {
             mascotaID: this.mascotaID,
             mascotaNombre: this.mascotaNombre,
             usuario: this.usuario,
-            fecha: Date.now()
+            fecha: Date.now(),
+            imagenMoment: this.imagen?this.imagen:"",
+            mascotaImagen: this.mascotaActualImagen
         };
         this.newMoment(moment);
         //Actualizar Moments, agregando el nuevo
-        setTimeout(() => this.getMoments(), 500);
+        setTimeout(() => this.getMoments(), 1000);
         //Reiniciar campos
         this.titulo = undefined;
         this.descripcion = undefined;
+        this.imagen = "";
       }
     }
     catch(e){
@@ -88,5 +96,25 @@ se hace la validación para mostrar solos los de la mascota actual*/
       .then(moments => this.moments = moments)
       .catch(error => this.errorMessage = error);
 
+  }
+
+  cargar(event){
+      var files = event.target.files;
+      var file = files[0];
+    
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+
+        this.fileName = file.name;
+    }
+  }
+  
+  _handleReaderLoaded(readerEvt) {
+     var binaryString = readerEvt.target.result;
+     this.imagen = btoa(binaryString);
   }
 }

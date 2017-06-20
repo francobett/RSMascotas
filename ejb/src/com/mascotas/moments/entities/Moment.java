@@ -1,12 +1,13 @@
 package com.mascotas.moments.entities;
 import java.io.Serializable;
-
+import java.sql.Blob;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 
@@ -45,6 +46,32 @@ public class Moment implements Serializable{
 	@OrderColumn()
 	@Column(nullable = false)
 	private Long fecha;
+	
+	@Lob
+	@OrderColumn()
+	@Column(nullable = false)
+	private String imagenMoment;
+	
+	@Lob
+	@OrderColumn()
+	@Column(nullable = false)
+	private String mascotaImagen;
+
+	public String getMascotaImagen() {
+		return mascotaImagen;
+	}
+
+	public void setMascotaImagen(String mascotaImagen) {
+		this.mascotaImagen = mascotaImagen;
+	} 
+
+	public String getImagenMoment() {
+		return imagenMoment;
+	}
+
+	public void setImagenMoment(String imagenMoment) {
+		this.imagenMoment = imagenMoment;
+	}
 	
 	public Long getId() {
 		return id;

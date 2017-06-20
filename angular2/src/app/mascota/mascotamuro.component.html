@@ -1,4 +1,5 @@
-PetMoment bro! {{mascotaNombre}}
+PetMoment bro! {{mascotaNombre}} 
+<img *ngIf="mascotaActualImagen" [src]="'data:image/jpg;base64,'+mascotaActualImagen"/>
 <label>Titulo:</label> 
 		<input type="text" class="form-control" name="titulo"  
 			[(ngModel)]="titulo" required>
@@ -6,6 +7,9 @@ PetMoment bro! {{mascotaNombre}}
 <label>Descripcion:</label> 
 		<input type="text" class="form-control" name="descripcion"  
 			[(ngModel)]="descripcion" required>
+
+<input type="file"
+                    id="filePicker" (change)="cargar($event)">
 <button class="btn btn-success"  (click)="submitForm()">Guardar</button>
 
 <div *ngFor="let moment of moments">
@@ -16,5 +20,6 @@ PetMoment bro! {{mascotaNombre}}
 	{{moment.usuario}}
 	{{moment.mascotaNombre}}
 	{{moment.fecha | date:'H:mm,d MMMM y'}}
+	<img *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
 </span>
 </div>

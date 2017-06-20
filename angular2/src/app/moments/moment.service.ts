@@ -48,6 +48,8 @@ export interface Moment {
   descripcion: string;
   mascotaID: Number;
   mascotaNombre: string;
+  mascotaImagen: string;
   usuario: string;
   fecha: number;
+  imagenMoment: string;
 }

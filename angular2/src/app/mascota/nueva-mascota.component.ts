@@ -14,10 +14,13 @@ export class NuevaMascotaComponent implements OnInit {
   mascota: Mascota;
   errorMessage: string;
   formSubmitted: boolean;
+  cargarImagen = "Cargar Imagen";
+  fileName: string;
+
   errors: string[] = [];
   constructor(private mascotasService: MascotaService,
     private route: ActivatedRoute, private router: Router) {
-    this.mascota = { id: null, nombre: '', fechaNacimiento: '', descripcion: ''};
+    this.mascota = { id: null, nombre: '', fechaNacimiento: '', descripcion: '',imagen: ''};
   }
 
   ngOnInit() {
@@ -29,6 +32,8 @@ export class NuevaMascotaComponent implements OnInit {
           .catch(error => this.errorMessage = <any>error);
       }
     });
+
+    this.fileName = this.cargarImagen;
   }
 
   submitForm() {
@@ -60,5 +65,27 @@ export class NuevaMascotaComponent implements OnInit {
       this.errorMessage = data.message;
     }
   }
+
+    cargar(event){
+      var files = event.target.files;
+      var file = files[0];
+    
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+
+        this.fileName = file.name;
+    }
+    }
+
+    _handleReaderLoaded(readerEvt) {
+     var binaryString = readerEvt.target.result;
+     this.mascota.imagen = btoa(binaryString);
+     console.log(this.mascota);
+  }
+
 
 }

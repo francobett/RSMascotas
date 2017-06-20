@@ -13,6 +13,7 @@ export class InicioComponent implements OnInit {
     errorMessage: string;
 
     moments: Moment[];
+    
     constructor(private usuarioService: UsuarioService,
     private momentService: MomentService,
     private mascotasService: MascotaService ) { }
@@ -20,8 +21,12 @@ export class InicioComponent implements OnInit {
     ngOnInit() {
         //Traer todos los momentos
         this.momentService.getMoments().
-        then (moments => this.moments = moments)
+        then (moments => {this.moments = moments
+        })
         .catch(error => this.errorMessage = <any>error);
+        
+        //Traer Imagen Mascota 
+
 
     }
 }

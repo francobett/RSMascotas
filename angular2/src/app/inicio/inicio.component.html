@@ -1,10 +1,11 @@
+
 <div *ngFor="let moment of moments">
-<span>
-	Momentos de la mascota actual
-	{{moment.mascota}}
+	<img *ngIf="moment.mascotaImagen" [src]="'data:image/jpg;base64,'+moment.mascotaImagen"/>
+	{{moment.mascotaNombre}}
     {{moment.titulo}}
 	{{moment.descripcion}}
 	{{moment.usuario}}
 	{{moment.fecha | date:'H:mm,d MMMM y'}}
-</span>
+	<img *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
+
 </div>

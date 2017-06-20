@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
@@ -39,7 +40,11 @@ public class Mascota implements Serializable {
 	private java.util.Date fechaNacimiento;
 
 	private String descripcion;
-
+	
+	@Lob
+	@OrderColumn()
+	private String imagen;
+	
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Usuario usuario;
 	
@@ -82,5 +87,13 @@ public class Mascota implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 }

@@ -68,6 +68,7 @@ public class MascotaService {
 			mascotaEditada = new Mascota();
 			mascotaEditada.setUsuario(usuario);
 			mascotaEditada.setNombre(mascota.getNombre());
+			mascotaEditada.setImagen(mascota.getImagen());
 			mascotaRepository.add(mascotaEditada);
 		}
 
@@ -77,7 +78,7 @@ public class MascotaService {
 		} catch (Exception e) {
 		}
 		mascotaEditada.setNombre(mascota.getNombre());
-
+		
 		return mascotaEditada.getId();
 	}
 

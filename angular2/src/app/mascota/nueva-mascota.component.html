@@ -44,6 +44,10 @@
 		</div>	
 	</div>
 
+	<div>
+		<input type="file" id="filePicker" (change)="cargar($event)">
+        <label for="filePicker" class="btn btn-success cargarImagen">{{fileName}}</label>
+	</div>
 	
 	<button class="btn btn-default" [routerLink]="['/mascotas']" >Cancelar</button>
 	<button class="btn btn-warning" *ngIf="mascota.id" (click)="onDelete()">Eliminar</button>

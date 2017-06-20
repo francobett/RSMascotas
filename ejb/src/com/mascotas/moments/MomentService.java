@@ -38,6 +38,8 @@ public class MomentService {
 		newMoment.setMascotaNombre(moment.getMascotaNombre());
 		newMoment.setUsuario(moment.getUsuario());
 		newMoment.setFecha(moment.getFecha());
+		newMoment.setImagenMoment(moment.getImagenMoment());
+		newMoment.setMascotaImagen(moment.getMascotaImagen());
 		momentRepository.add(newMoment);
 	}
 
