@@ -79,7 +79,8 @@ public class MascotaServiceValidations {
 			throw new BusinessException("Datos de usuario invalidos.",
 					new ValidationError("perfil", "Debe definir el perfil a actualizar."));
 		}
-
+		
+		
 		if (mascota.getId() != null) {
 			validarFindById(login, mascota.getId());
 		}

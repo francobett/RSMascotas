@@ -40,10 +40,22 @@ getMoments(): Promise<Moment[]> {
       console.log(MomentService.serverUrl + this.url)
   }
 
+  eliminarMoment(id: number): Promise<any> {
+    if (id) {
+      return this.http.delete(MomentService.serverUrl + this.url + '/' + id, this.getRestHeader())
+      .toPromise()
+      .then(response => {
+        return "";
+      })
+      .catch(this.handleError);
+    }
+  }
+
 }
 
 // Class Moment.
 export interface Moment {
+  id: number;
   titulo: string;
   descripcion: string;
   mascotaID: Number;

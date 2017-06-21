@@ -9,11 +9,16 @@ import { Mascota } from '../mascota/mascota.service';
 
 @Component( {
     selector: 'app-mascotaMuro',
-    templateUrl: './mascotaMuro.component.html'
+    templateUrl: './mascotamuro.component.html',
+    styleUrls: ['./mascotamuro.component.css']
 })
 export class MascotaMuroComponent implements OnInit {
     errorMessage: string;
+    
+    mascotaDescripcion: string
+    
     //Atributos para Guardar el Moment
+    
     mascotaNombre: string;
     mascotaID: number;
     titulo: string;
@@ -43,7 +48,8 @@ export class MascotaMuroComponent implements OnInit {
         //Traer Nombre Mascota según ID , se parsea a Number
         this.mascotasService.buscarMascota( this.mascotaID)
           .then(mascotaActual => {this.mascotaNombre = mascotaActual.nombre,
-          this.mascotaActualImagen = mascotaActual.imagen    
+          this.mascotaActualImagen = mascotaActual.imagen  ,
+          this.mascotaDescripcion = mascotaActual.descripcion
         })
           .catch(error => this.errorMessage = <any>error);
         //Traer Momentos
@@ -56,13 +62,17 @@ export class MascotaMuroComponent implements OnInit {
     //Crear nuevo Moment y Actualizar la lista al presionar Guardar
     submitForm() {
     try {
-      //Si es vacio o nulo no hacer nada
+      //Si es vacio o nulo no hacer nada el titulo o descripción
       if (this.titulo == ""
           || this.titulo == undefined
-          || this.titulo == null) {} 
+          || this.titulo == null  
+          ||this.descripcion == "" 
+           || this.descripcion == undefined
+            || this.descripcion == null ) {} 
       else {
         this.titulo = this.titulo.trim();//Eliminar espacios innecesarios en título
         let moment: Moment = {
+            id: null,
             titulo: this.titulo,
             descripcion: this.descripcion,
             mascotaID: this.mascotaID,
@@ -73,12 +83,8 @@ export class MascotaMuroComponent implements OnInit {
             mascotaImagen: this.mascotaActualImagen
         };
         this.newMoment(moment);
-        //Actualizar Moments, agregando el nuevo
-        setTimeout(() => this.getMoments(), 1000);
-        //Reiniciar campos
-        this.titulo = undefined;
-        this.descripcion = undefined;
-        this.imagen = "";
+        //Recargar Página
+        window.location.reload();
       }
     }
     catch(e){
@@ -116,5 +122,11 @@ se hace la validación para mostrar solos los de la mascota actual*/
   _handleReaderLoaded(readerEvt) {
      var binaryString = readerEvt.target.result;
      this.imagen = btoa(binaryString);
+  }
+
+  onDelete(id:number){
+    this.momentService.eliminarMoment(id)
+      .then(any => window.location.reload())
+      
   }
 }

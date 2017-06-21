@@ -78,7 +78,7 @@ public class MascotaService {
 		} catch (Exception e) {
 		}
 		mascotaEditada.setNombre(mascota.getNombre());
-		
+		mascotaEditada.setImagen(mascota.getImagen());
 		return mascotaEditada.getId();
 	}
 

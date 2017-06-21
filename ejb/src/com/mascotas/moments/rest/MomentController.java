@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 
 import com.mascotas.application.dtos.FormError;
 import com.mascotas.application.exceptions.BusinessException;
-import com.mascotas.mascotas.dto.MascotaDTO;
+
 import com.mascotas.moments.MomentService;
 import com.mascotas.moments.dto.MomentDTO;
 @Stateless
@@ -30,7 +30,7 @@ public class MomentController {
 	
 	
 	/**
-	 * Busca las mactoas del usuario logueado.
+	 * Busca los moments.
 	 * 
 	 * @return
 	 * @throws NamingException
@@ -52,7 +52,7 @@ public class MomentController {
 	}
 
 	/**
-	 * Graba una mascota a la base de datos.
+	 * Guarda un moment en la base de datos
 	 * 
 	 * @return
 	 * @throws NamingException
@@ -73,5 +73,29 @@ public class MomentController {
 			return Response.status(500).entity(FormError.processError(e)).build();
 		}
 	}
+	
+	/**
+	 * Elimina un moment de la base de datos según el id
+	 * 
+	 * @return
+	 * @throws NamingException
+	 */
+	@Path("/{id}")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response eliminarMoment(@PathParam("id") Integer id) throws NamingException {
+		try {
+			momentService.eliminarMoment(id);
+			return Response.ok().build();
+		} catch (BusinessException e) {
+			e.printStackTrace();
+			return Response.status(500).entity(FormError.processError(e)).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(500).entity(FormError.processError(e)).build();
+		}
+	}
+	
 	
 }

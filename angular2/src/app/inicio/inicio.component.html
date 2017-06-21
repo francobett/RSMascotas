@@ -1,11 +1,20 @@
-
-<div *ngFor="let moment of moments">
-	<img *ngIf="moment.mascotaImagen" [src]="'data:image/jpg;base64,'+moment.mascotaImagen"/>
-	{{moment.mascotaNombre}}
-    {{moment.titulo}}
-	{{moment.descripcion}}
-	{{moment.usuario}}
-	{{moment.fecha | date:'H:mm,d MMMM y'}}
-	<img *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
-
+<div *ngIf="moments">
+<div class="containerMoments" *ngFor="let moment of moments">
+	<div class="moment">
+		<div class="momentHeader">
+			<div><img class="img-Mascota" *ngIf="moment.mascotaImagen" [src]="'data:image/jpg;base64,'+moment.mascotaImagen"/></div>
+			<div class="detalleHeader">
+				<span class="txtTitle">{{moment.mascotaNombre}}[{{moment.usuario}}]</span>
+				<br>
+				{{moment.fecha | date:'H:mm, d MMMM y'}}
+			</div>
+		</div>
+		<hr>
+		<div class="momentBody">
+			<p class="txtTitle">{{moment.titulo}}</p>
+			<p>{{moment.descripcion}}</p>
+			<img class="imgMoment" *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
+		</div>
+	</div>
+</div>
 </div>

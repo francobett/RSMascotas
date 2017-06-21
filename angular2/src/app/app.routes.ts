@@ -12,7 +12,8 @@ import { InicioComponent } from "app/inicio/inicio.component";
 
 // Route Configuration
 export const routes: Routes = [
-    { path: '', component: InicioComponent },
+    { path: '', component: WelcomeComponent},
+    { path: 'inicio', component: InicioComponent },
     { path: 'perfilUsuario', component: PerfilComponent },
     { path: 'registrarUsuario', component: RegistrarUsuarioComponent },
     { path: 'mascotas', component: MascotaComponent },

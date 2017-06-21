@@ -49,7 +49,7 @@ export class PerfilComponent implements OnInit {
     this.cleanRestValidations();
     if (this.form.valid) {
       this.perfilService.guardarPerfil(this.form.value)
-        .then(usuario => this.router.navigate(['/']))
+        .then(usuario => this.router.navigate(['/inicio']))
         .catch(error => this.errorMessage = <any>error);
     } else {
       this.formSubmitted = true;

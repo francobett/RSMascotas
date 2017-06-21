@@ -1,0 +1,30 @@
+.containerMascotas{
+    text-align: center;
+    position: relative;
+    left: 10%;
+    width: 80%;
+    margin-top: 10px;
+    border: 2px solid #49535f;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-bottom:20px;
+    margin-bottom: 20px;
+}
+.btn-link{
+    font-size: 20px;
+    text-shadow: 0px 0px 2px #0B0052;
+    margin-bottom: 20px;
+    cursor: pointer;
+    
+}
+hr {
+    border-top: 2px solid #0B0052;
+}
+.imgMascota{
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.botonesMisMascotas{
+    text-align: center;
+}

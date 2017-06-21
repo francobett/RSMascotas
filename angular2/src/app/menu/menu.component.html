@@ -1,7 +1,7 @@
 <div class="pageHeader">
 	<div class='inlineContent menu' *ngIf="usuarioLogueado()">
 		<input type="button" class="menuButton"
-			[routerLink]="['/']" value="Inicio" />
+			[routerLink]="['/inicio']" value="Inicio" />
 	</div>
 
 	<div class='inlineContent menu' *ngIf="usuarioLogueado()">
@@ -18,7 +18,7 @@
 	<div class='inlineContent userLoggedIn' *ngIf="usuarioLogueado()">
 		<img src="assets/logout.png" class="errorIcon"
 			alt="Cerrar sesi&oacute;n" title="Cerrar sesi&oacute;n"
-			(click)="logout()" /> <label> {{ usuarioLogueado().nombre }}
+			(click)="logout()" [routerLink]="['/']"/> <label> {{ usuarioLogueado().nombre }}
 		</label>
 	</div>
 

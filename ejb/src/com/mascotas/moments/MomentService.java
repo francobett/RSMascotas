@@ -10,15 +10,12 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 
 import com.mascotas.application.exceptions.BusinessException;
-import com.mascotas.application.utils.StringUtils;
-import com.mascotas.mascotas.dto.MascotaDTO;
-import com.mascotas.mascotas.entities.Mascota;
+
 import com.mascotas.mascotas.repository.MascotaRepository;
 import com.mascotas.moments.dto.MomentDTO;
 import com.mascotas.moments.entities.Moment;
 import com.mascotas.moments.repository.MomentRepository;
-import com.mascotas.seguridad.entities.Usuario;
-import com.mascotas.seguridad.repository.UsuariosRepository;
+
 @Stateless
 @LocalBean
 @TransactionManagement(TransactionManagementType.CONTAINER)
@@ -28,6 +25,9 @@ public class MomentService {
 	@EJB
 	private MomentRepository momentRepository;
 	
+	/* Servicio que crea recibe un DTO de Moment
+	 * Luego crea un moment con los datos del DTO
+	 * y por ultimo llama al repository para que lo añada a la base de datos*/
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void newMoment(MomentDTO moment) throws BusinessException {
 		Moment newMoment = new Moment();
@@ -47,5 +47,10 @@ public class MomentService {
 		List<Moment> moment = momentRepository.getMoments();
 
 		return MomentDTO.Factory.get(moment);
+	}
+	
+	public void eliminarMoment(Integer id) {
+
+		momentRepository.remove(momentRepository.get(id));
 	}
 }

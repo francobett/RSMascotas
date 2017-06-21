@@ -1,6 +1,6 @@
 package com.mascotas.moments.repository;
 import java.util.List;
-import java.util.ArrayList;
+
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -33,7 +33,7 @@ public class MomentRepository implements Repositorio<Integer, Moment>{
 
 	@Override
 	public List<Moment> getAll() {
-		throw new RuntimeException("No se puede acceder a todos los estados.");
+		throw new RuntimeException("No se puede acceder");
 	}
 	
 

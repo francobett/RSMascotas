@@ -1,28 +1,12 @@
 <div class="container">
-	<table cellspacing='0'>
-		<thead>
-			<tr>
-				<th colspan=3><div [style.font-size.em]='2'>Mascotas</div></th>
-			</tr>
-			<tr>
-				<th>Nombre</th>
-				<th>Descripcion</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- ngFor en el click del renglon se ejecuta un metodo, se le pasa la mascota actual -->
-			<tr *ngFor="let mascota of mascotas">
-				<td><a routerLink="/muro/{{mascota.id}}">{{mascota.nombre}}</a></td>
-				<td>{{mascota.descripcion}}</td>
-				<td class="text">
-					<img src="/assets/edit.png" name="editar" [routerLink]="['/nuevaMascota/' + mascota.id ]"
-						 />
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="containerMascotas" *ngFor="let mascota of mascotas">
+			<a class="btn-link" routerLink="/muro/{{mascota.id}}">{{mascota.nombre}}</a>
+			<hr>
+			<img class="imgMascota" *ngIf="mascota.imagen" [src]="'data:image/jpg;base64,'+mascota.imagen"/>
+	</div>
+	<div class="botonesMisMascotas">
 	<button class="btn btn-success" [routerLink]="['/nuevaMascota']">Nueva</button>
-	<button class="btn btn-default" [routerLink]="['/']" >Volver</button>	
+	<button class="btn btn-default" [routerLink]="['/inicio']" >Volver</button>	
+	</div>
 </div>
 

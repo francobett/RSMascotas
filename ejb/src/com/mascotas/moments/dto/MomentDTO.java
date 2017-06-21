@@ -1,19 +1,18 @@
 package com.mascotas.moments.dto;
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import com.mascotas.mascotas.entities.Mascota;
 import com.mascotas.moments.entities.Moment;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MomentDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private Integer id;
 	private String titulo;
 	private String descripcion;
 	private Integer mascotaID; 
@@ -23,27 +22,13 @@ public class MomentDTO implements Serializable {
 	private String imagenMoment;
 	private String mascotaImagen;
 
-	public String getMascotaImagen() {
-		return mascotaImagen;
-	}
-
-	public void setMascotaImagen(String mascotaImagen) {
-		this.mascotaImagen = mascotaImagen;
-	} 
 	
-	public String getImagenMoment() {
-		return imagenMoment;
-	}
-
-	public void setImagen(String imagenMoment) {
-		this.imagenMoment = imagenMoment;
-	}
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -91,6 +76,21 @@ public class MomentDTO implements Serializable {
 
 	public void setFecha(Long fecha) {
 		this.fecha = fecha;
+	}
+	public String getMascotaImagen() {
+		return mascotaImagen;
+	}
+
+	public void setMascotaImagen(String mascotaImagen) {
+		this.mascotaImagen = mascotaImagen;
+	} 
+	
+	public String getImagenMoment() {
+		return imagenMoment;
+	}
+
+	public void setImagen(String imagenMoment) {
+		this.imagenMoment = imagenMoment;
 	}
 	
 	public static class Factory {

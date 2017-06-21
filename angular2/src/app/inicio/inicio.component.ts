@@ -7,16 +7,16 @@ import { MascotaService, Mascota } from "app/mascota/mascota.service";
 
 @Component( {
     selector: 'app-inicio',
-    templateUrl: './inicio.component.html'
+    templateUrl: './inicio.component.html',
+    styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
     errorMessage: string;
 
     moments: Moment[];
     
-    constructor(private usuarioService: UsuarioService,
-    private momentService: MomentService,
-    private mascotasService: MascotaService ) { }
+    constructor(
+        private momentService: MomentService) { }
 
     ngOnInit() {
         //Traer todos los momentos
@@ -24,8 +24,6 @@ export class InicioComponent implements OnInit {
         then (moments => {this.moments = moments
         })
         .catch(error => this.errorMessage = <any>error);
-        
-        //Traer Imagen Mascota 
 
 
     }

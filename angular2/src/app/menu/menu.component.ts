@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario, UsuarioService } from '../usuario/usuario.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,8 @@ export class MenuComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(fb: FormBuilder, private usuarioService: UsuarioService) {
+  constructor(fb: FormBuilder, private usuarioService: UsuarioService,
+  private router: Router) {
     this.loginForm = fb.group({
       'username': [null, Validators.required],
       'password': [null, Validators.required]
@@ -32,7 +34,8 @@ export class MenuComponent implements OnInit {
 
   login() {
     this.usuarioService.login(this.loginForm.value.username, this.loginForm.value.password)
-      .then(usuario => this.logueado = usuario)
+      .then(usuario => {this.logueado = usuario;
+      this.router.navigate(['/inicio'])})
       .catch(error => this.errorMessage = <any>error);
   }
 

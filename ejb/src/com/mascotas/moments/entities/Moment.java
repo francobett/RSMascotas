@@ -1,19 +1,16 @@
 package com.mascotas.moments.entities;
 import java.io.Serializable;
-import java.sql.Blob;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OrderColumn;
 
 
-import com.mascotas.mascotas.entities.Mascota;
-import com.mascotas.seguridad.entities.Usuario;
 
 @Entity(name = "moment")
 public class Moment implements Serializable{
@@ -21,7 +18,7 @@ public class Moment implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	@OrderColumn()
 	@Column(nullable = false)
@@ -47,6 +44,8 @@ public class Moment implements Serializable{
 	@Column(nullable = false)
 	private Long fecha;
 	
+	// Lob indica la columna es de tipo LONGTEXT
+	
 	@Lob
 	@OrderColumn()
 	@Column(nullable = false)
@@ -57,27 +56,13 @@ public class Moment implements Serializable{
 	@Column(nullable = false)
 	private String mascotaImagen;
 
-	public String getMascotaImagen() {
-		return mascotaImagen;
-	}
-
-	public void setMascotaImagen(String mascotaImagen) {
-		this.mascotaImagen = mascotaImagen;
-	} 
-
-	public String getImagenMoment() {
-		return imagenMoment;
-	}
-
-	public void setImagenMoment(String imagenMoment) {
-		this.imagenMoment = imagenMoment;
-	}
 	
-	public Long getId() {
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -126,5 +111,20 @@ public class Moment implements Serializable{
 
 	public void setFecha(Long fecha) {
 		this.fecha = fecha;
+	}
+	public String getMascotaImagen() {
+		return mascotaImagen;
+	}
+
+	public void setMascotaImagen(String mascotaImagen) {
+		this.mascotaImagen = mascotaImagen;
+	} 
+
+	public String getImagenMoment() {
+		return imagenMoment;
+	}
+
+	public void setImagenMoment(String imagenMoment) {
+		this.imagenMoment = imagenMoment;
 	}
 }

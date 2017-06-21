@@ -1,4 +1,8 @@
 
+*{
+    
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
 .pageHeader {
 	width: 100%;
 	background: #4072B4;

@@ -1,25 +1,48 @@
-PetMoment bro! {{mascotaNombre}} 
-<img *ngIf="mascotaActualImagen" [src]="'data:image/jpg;base64,'+mascotaActualImagen"/>
+<div class="muro">
+<div class="mascotaInf"> 
+	<div class="txtTitle">{{mascotaNombre}} </div>
+	<img *ngIf="mascotaActualImagen" [src]="'data:image/jpg;base64,'+mascotaActualImagen"/>
+	<img class="editarLink" src="/assets/edit.png" name="editar" [routerLink]="['/nuevaMascota/' + mascotaID]"/>
+	
+	<div class="descripcion">Descripcion: <br> {{mascotaDescripcion}}</div>
+	
+</div>
+
+<form>
+	<div class="txtTitle" >Publicar un nuevo Moment</div>
+
 <label>Titulo:</label> 
 		<input type="text" class="form-control" name="titulo"  
 			[(ngModel)]="titulo" required>
 
 <label>Descripcion:</label> 
-		<input type="text" class="form-control" name="descripcion"  
+		<input type="textarea"  class="form-control" name="descripcion"  
 			[(ngModel)]="descripcion" required>
 
-<input type="file"
-                    id="filePicker" (change)="cargar($event)">
-<button class="btn btn-success"  (click)="submitForm()">Guardar</button>
+<label>Imagen:</label> 
+<input type="file" class="form-control" id="filePicker" (change)="cargar($event)">
 
-<div *ngFor="let moment of moments">
-<span *ngIf="moment.mascotaID == mascotaID">
-	Momentos de la mascota actual
-	{{moment.titulo}}
-	{{moment.descripcion}}
-	{{moment.usuario}}
-	{{moment.mascotaNombre}}
-	{{moment.fecha | date:'H:mm,d MMMM y'}}
-	<img *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
-</span>
+<button class="btn btn-success"  (click)="submitForm()">Publicar</button>
+
+</form>
+
+
+<div class="containerMoments" *ngFor="let moment of moments">
+<div class="moments" *ngIf="moment.mascotaID == mascotaID">
+	<div class="momentHeader">
+			<div class="detalleHeader">
+				<p class="txtTitle">{{moment.titulo}}</p>
+				<b>{{moment.fecha | date:'H:mm, d MMMM y'}}</b>
+			</div>
+		</div>
+		<hr>
+		<div class="momentBody">
+			<p>{{moment.descripcion}}</p>
+			<img class="imgMoment" *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
+		</div>
+		<button class="btn btn-warning" (click)="onDelete(moment.id)">Eliminar</button>
+</div>
+
+</div>
+
 </div>
