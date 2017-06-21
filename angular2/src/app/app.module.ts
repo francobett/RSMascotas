@@ -51,7 +51,7 @@ import { MomentService } from "app/moments/moment.service";
   ProvinciaService,
   PerfilService, 
   { provide: APP_BASE_HREF, useValue: environment.baseHref },
-  { provide: LOCALE_ID, useValue: "es-AR" }
+  { provide: LOCALE_ID, useValue: "es-AR" } //Se utiliza para el Pipe de date. Utilizar los valores para Argentina
 
   ],
   bootstrap: [AppComponent]

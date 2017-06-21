@@ -28,6 +28,7 @@ public class MomentService {
 	/* Servicio que crea recibe un DTO de Moment
 	 * Luego crea un moment con los datos del DTO
 	 * y por ultimo llama al repository para que lo añada a la base de datos*/
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void newMoment(MomentDTO moment) throws BusinessException {
 		Moment newMoment = new Moment();
@@ -42,12 +43,15 @@ public class MomentService {
 		newMoment.setMascotaImagen(moment.getMascotaImagen());
 		momentRepository.add(newMoment);
 	}
-
+	/* Busca los moments de la base de datos */
+	
 	public List<MomentDTO> findMoments() throws BusinessException {
 		List<Moment> moment = momentRepository.getMoments();
 
 		return MomentDTO.Factory.get(moment);
 	}
+	
+	/* Elimina el moment según id de la base de datos */
 	
 	public void eliminarMoment(Integer id) {
 

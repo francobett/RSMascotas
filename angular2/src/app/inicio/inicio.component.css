@@ -1,12 +1,13 @@
-
-.img-Mascota{
+.img-Mascota {
     width: 5em;
     height: 5em;
 }
-.moment{
+
+.moment {
     padding: 10px;
 }
- .containerMoments {
+
+.containerMoments {
     position: relative;
     left: 10%;
     width: 80%;
@@ -14,27 +15,32 @@
     border: 2px solid #dddddd;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-  }
-.momentHeader{
-    padding:0px;
+}
+
+.momentHeader {
+    padding: 0px;
     display: inline-flex;
     font-weight: bold;
 }
-.momentBody{
+
+.momentBody {
     text-align: center;
 }
+
 hr {
     border-top: 2px solid #e9ebee;
 }
 
-.detalleHeader{
+.detalleHeader {
     margin-top: 5%;
 }
-.txtTitle{
+
+.txtTitle {
     font-size: 20px;
     text-shadow: 0px 0px 2px #0B0052;
 }
-.imgMoment{
-    max-height: 80%;
-    max-width: 80%;
+
+.imgMoment {
+    max-height: 60%;
+    max-width: 60%;
 }

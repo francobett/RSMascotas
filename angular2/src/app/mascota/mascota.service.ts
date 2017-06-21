@@ -9,8 +9,8 @@ export class MascotaService extends RestBaseService {
 
   constructor(private http: Http) { super(); }
 
+  // Buscar Mascotas Usuario Logeado -- El Usuario se obtiene en el backend -- service
   buscarMascotas(): Promise<Mascota[]> {
-    
     return this.http.get(MascotaService.serverUrl + this.url, this.getRestHeader())
       .toPromise()
       .then(response => {
@@ -19,6 +19,7 @@ export class MascotaService extends RestBaseService {
       .catch(this.handleError);
   }
 
+  // Buscar mascota según id -- service
   buscarMascota(id: number): Promise<Mascota> {
     return this.http.get(MascotaService.serverUrl + this.url + '/' + id, this.getRestHeader())
       .toPromise()
@@ -29,6 +30,7 @@ export class MascotaService extends RestBaseService {
       
   }
 
+  // Persistir mascota -- service
   guardarMascota(value: Mascota): Promise<Mascota> {
     if (value.id) {
       return this.http.post(MascotaService.serverUrl + this.url + '/' + value.id, JSON.stringify(value), this.getRestHeader())
@@ -47,6 +49,7 @@ export class MascotaService extends RestBaseService {
     }
   }
 
+  // Eliminar Mascota -- service
   eliminarMascota(id: number): Promise<any> {
     if (id) {
       return this.http.delete(MascotaService.serverUrl + this.url + '/' + id, this.getRestHeader())
@@ -60,7 +63,7 @@ export class MascotaService extends RestBaseService {
     
 
 }
-
+//Class Mascota
 export interface Mascota {
   id: number;
   nombre: string;

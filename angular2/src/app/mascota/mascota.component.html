@@ -1,12 +1,11 @@
 <div class="container">
-	<div class="containerMascotas" *ngFor="let mascota of mascotas">
-			<a class="btn-link" routerLink="/muro/{{mascota.id}}">{{mascota.nombre}}</a>
-			<hr>
-			<img class="imgMascota" *ngIf="mascota.imagen" [src]="'data:image/jpg;base64,'+mascota.imagen"/>
-	</div>
-	<div class="botonesMisMascotas">
-	<button class="btn btn-success" [routerLink]="['/nuevaMascota']">Nueva</button>
-	<button class="btn btn-default" [routerLink]="['/inicio']" >Volver</button>	
-	</div>
+    <div class="containerMascotas" *ngFor="let mascota of mascotas">
+        <a class="btn-link" routerLink="/muro/{{mascota.id}}">{{mascota.nombre}}</a>
+        <hr>
+        <img class="imgMascota" *ngIf="mascota.imagen" [src]="'data:image/jpg;base64,'+mascota.imagen" />
+    </div>
+    <div class="botonesMisMascotas">
+        <button class="btn btn-success" [routerLink]="['/nuevaMascota']">Nueva</button>
+        <button class="btn btn-default" [routerLink]="['/inicio']">Volver</button>
+    </div>
 </div>
-

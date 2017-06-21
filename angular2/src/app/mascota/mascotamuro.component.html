@@ -1,34 +1,25 @@
 <div class="muro">
-<div class="mascotaInf"> 
-	<div class="txtTitle">{{mascotaNombre}} </div>
-	<img *ngIf="mascotaActualImagen" [src]="'data:image/jpg;base64,'+mascotaActualImagen"/>
-	<img class="editarLink" src="/assets/edit.png" name="editar" [routerLink]="['/nuevaMascota/' + mascotaID]"/>
-	
-	<div class="descripcion">Descripcion: <br> {{mascotaDescripcion}}</div>
-	
-</div>
-
-<form>
-	<div class="txtTitle" >Publicar un nuevo Moment</div>
-
-<label>Titulo:</label> 
-		<input type="text" class="form-control" name="titulo"  
-			[(ngModel)]="titulo" required>
-
-<label>Descripcion:</label> 
-		<input type="textarea"  class="form-control" name="descripcion"  
-			[(ngModel)]="descripcion" required>
-
-<label>Imagen:</label> 
-<input type="file" class="form-control" id="filePicker" (change)="cargar($event)">
-
-<button class="btn btn-success"  (click)="submitForm()">Publicar</button>
-
-</form>
-
-
-<div class="containerMoments" *ngFor="let moment of moments">
-<div class="moments" *ngIf="moment.mascotaID == mascotaID">
+    <div class="mascotaInf">
+        <div class="txtTitle">{{mascotaNombre}} </div>
+        <img class="imgMascota" *ngIf="mascotaActualImagen" [src]="'data:image/jpg;base64,'+mascotaActualImagen" />
+        <img class="editarLink" src="/assets/edit.png" name="editar" [routerLink]="['/nuevaMascota/' + mascotaID]" />
+        <div class="descripcion">Descripcion:
+            <br> {{mascotaDescripcion}}</div>
+    </div>
+    <form>
+        <div class="txtTitle">Publicar un nuevo Moment</div>
+        <label>Titulo:</label>
+        <input type="text" class="form-control" name="titulo" [(ngModel)]="titulo" required>
+        <label>Descripcion:</label>
+        <input type="textarea" class="form-control" name="descripcion" [(ngModel)]="descripcion" required>
+        <label>Imagen:</label>
+        <input type="file" class="form-control" id="filePicker" (change)="cargar($event)">
+        <button class="btn btn-success" (click)="submitForm()">Publicar</button>
+    </form>
+    <span class="" *ngFor="let moment of moments">
+<span class="" *ngIf="moment.mascotaID == mascotaID">
+<div class= "containerMoments">
+	<div class="moments">
 	<div class="momentHeader">
 			<div class="detalleHeader">
 				<p class="txtTitle">{{moment.titulo}}</p>
@@ -41,8 +32,8 @@
 			<img class="imgMoment" *ngIf="moment.imagenMoment" [src]="'data:image/jpg;base64,'+moment.imagenMoment"/>
 		</div>
 		<button class="btn btn-warning" (click)="onDelete(moment.id)">Eliminar</button>
+		</div>
 </div>
-
-</div>
-
+</span>
+    </span>
 </div>

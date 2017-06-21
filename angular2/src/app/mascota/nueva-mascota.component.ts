@@ -17,6 +17,7 @@ export class NuevaMascotaComponent implements OnInit {
   fileName: string;
   alertImg:string;
   errors: string[] = [];
+  
   constructor(private mascotasService: MascotaService,
     private momentService: MomentService,
     private route: ActivatedRoute, private router: Router) {
@@ -32,11 +33,10 @@ export class NuevaMascotaComponent implements OnInit {
           .catch(error => this.errorMessage = <any>error);
       }
     });
-
-
   }
 
-  submitForm() {//Crear nueva mascota
+  //Crear nueva mascota
+  submitForm() {
     if (this.mascota.imagen == "" || this.mascota.imagen == undefined || this.mascota.imagen == null ){ this.alertImg = "Ingrese Imagen"}
     else {
     this.cleanRestValidations();
@@ -46,8 +46,8 @@ export class NuevaMascotaComponent implements OnInit {
     }
   }
   
-  
-  onDelete() { //Eliminar mascota con sus moments
+  //Eliminar mascota con sus moments
+  onDelete() { 
     this.cleanRestValidations();
     this.mascotasService.eliminarMascota(this.mascota.id)
       .then(any => this.router.navigate(['/mascotas']))
@@ -84,11 +84,8 @@ export class NuevaMascotaComponent implements OnInit {
     
       if (files && file) {
           var reader = new FileReader();
-
           reader.onload =this._handleReaderLoaded.bind(this);
-
           reader.readAsBinaryString(file);
-
           this.fileName = file.name;
       }
     }

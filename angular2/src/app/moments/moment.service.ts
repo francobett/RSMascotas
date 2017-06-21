@@ -9,7 +9,7 @@ export class MomentService extends RestBaseService {
     private url = '/rest/moment';
     
     constructor(private http: Http) { super(); }
-//Obtener Moments service
+//Obtener Moments -- service
 getMoments(): Promise<Moment[]> {
     return this.http
       .get(
@@ -26,7 +26,7 @@ getMoments(): Promise<Moment[]> {
      
       
   }
-//Crear Moment service
+//Crear Moment -- service
   newMoment(moment: Moment) {
     this.http
       .post(
@@ -39,7 +39,7 @@ getMoments(): Promise<Moment[]> {
       .catch();
       console.log(MomentService.serverUrl + this.url)
   }
-
+// Eliminar Moment según id -- service
   eliminarMoment(id: number): Promise<any> {
     if (id) {
       return this.http.delete(MomentService.serverUrl + this.url + '/' + id, this.getRestHeader())
